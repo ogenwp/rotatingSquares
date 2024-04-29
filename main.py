@@ -34,17 +34,17 @@ def rotateSubmatrix(indices):
         temp_values.append(label["text"])
         temp_indices.append(index)
 
-    # Rotate values according to the specified scheme
+    # поворот субматрицы по часовой стрелке на одну клетку
     if len(temp_values) == 4:
         temp_values = [temp_values[2], temp_values[0], temp_values[3], temp_values[1]]
 
-    # Update labels with rotated values
+    # обновление лейблов
     for i, index in enumerate(temp_indices):
         row, col = index2RowCol(index)
         label = matrixLabels[row][col]
         label.config(text=temp_values[i])
 
-    # Update letters list with rotated values
+    # обновление списка letters
     for i, index in enumerate(temp_indices):
         letters[index - 1] = temp_values[i]
 
@@ -69,12 +69,12 @@ def replace():
         row1, col1 = index2RowCol(index1)
         row2, col2 = index2RowCol(index2)
 
-        # Swap elements in the matrix
+        # свап лейблов
         temp = matrixLabels[row1][col1]["text"]
         matrixLabels[row1][col1].config(text=matrixLabels[row2][col2]["text"])
         matrixLabels[row2][col2].config(text=temp)
 
-        # Swap elements in the letters list
+        # свап элементов в letters
         index1_value = letters[index1 - 1]
         index2_value = letters[index2 - 1]
         letters[index1 - 1] = index2_value
@@ -85,7 +85,7 @@ def replace():
     # выключение кнопки замена
 
 
-        #replaceButton.config(state=tk.DISABLED)
+        replaceButton.config(state=tk.DISABLED)
 
 
 root = tk.Tk()
@@ -105,7 +105,7 @@ createMatrix()
 buttonFrame = tk.Frame(root)
 buttonFrame.grid(row=4, columnspan=4)
 
-# индекмы матрицы для индексов подматриц
+# индекмы матрицы для кнопок 
 buttonIndices = [
     [5, 1, 6, 2],
     [6, 2, 7, 3],
@@ -146,6 +146,5 @@ replaceButton.grid(row=0, column=4, padx=5)
 
 checkButton = tk.Button(root, text="Проверка", command=checkAlphabeticalOrder)
 checkButton.grid(row=0, column=5)
-#debugButton = tk.Button(root, text="123", command=pass)
-#debugButton.grid(row=0, column=6)
+
 root.mainloop()
