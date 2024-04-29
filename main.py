@@ -142,7 +142,7 @@ textbox2.grid(row=0, column=3, padx=5)
 replaceButton = tk.Button(textboxFrame, text="Замена", command=replace)
 replaceButton.grid(row=0, column=4, padx=5)
 # вызовв замены
-#replaceCalled = False
+replaceCalled = False
 
 checkButton = tk.Button(root, text="Проверка", command=checkAlphabeticalOrder)
 checkButton.grid(row=0, column=5)
