@@ -1,4 +1,4 @@
-A small project with very bad geometry, but fully working
+A small project with bad geometry, but fully working
 ____________________
 1. In the window appears a matrix consisting of randomly arranged 16 first letters of the English alphabet
 2. there are 9 buttons that rotate 9 submatrices of size 2 by 2 clockwise by one element
