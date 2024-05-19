@@ -9,7 +9,7 @@ def createMatrix():
     letters = list(string.ascii_lowercase[:16])# ограничение алфавита от 'a' до 'p'
 
     random.shuffle(letters);print(letters)
-    print(sorted(letters))# перемешиваем буквы случайным образом
+    # перемешиваем буквы случайным образом
     for i in range(4):
         for j in range(4):
             letter = letters[i * 4 + j]
@@ -61,8 +61,8 @@ def updateMatrix():
 
 
 def replace():
-    #global replace_called
-    #if not replace_called:
+    global replaceCalled
+    if not replaceCalled:
         index1 = int(textbox1.get())
         index2 = int(textbox2.get())
 
@@ -80,11 +80,9 @@ def replace():
         letters[index1 - 1] = index2_value
         letters[index2 - 1] = index1_value
 
-        print(letters)
-
-    # выключение кнопки замена
 
 
+        # выключение кнопки замена
         replaceButton.config(state=tk.DISABLED)
 
 
@@ -105,7 +103,7 @@ createMatrix()
 buttonFrame = tk.Frame(root)
 buttonFrame.grid(row=4, columnspan=4)
 
-# индекмы матрицы для кнопок 
+# индекмы матрицы для кнопок
 buttonIndices = [
     [5, 1, 6, 2],
     [6, 2, 7, 3],
@@ -117,7 +115,6 @@ buttonIndices = [
     [14, 10, 15, 11],
     [15, 11, 16, 12]
 ]
-
 # кнопки1-9
 for i, indices in enumerate(buttonIndices):
     button = tk.Button(buttonFrame, text=str(i + 1), command=lambda indices=indices: rotateSubmatrix(indices))
@@ -127,24 +124,24 @@ for i, indices in enumerate(buttonIndices):
 textboxFrame = tk.Frame(root)
 textboxFrame.grid(row=5, columnspan=4, pady=10)
 
-textbox1Label = tk.Label(textboxFrame, text="Index 1:")
+textbox1Label = tk.Label(textboxFrame, text="Индекс 1:")
 textbox1Label.grid(row=0, column=0)
 
 textbox1 = tk.Entry(textboxFrame)
 textbox1.grid(row=0, column=1, padx=5)
 
-textbox2Label = tk.Label(textboxFrame, text="Index 2:")
-textbox2Label.grid(row=0, column=2)
+textbox2Label = tk.Label(textboxFrame, text="Индекс 2:")
+textbox2Label.grid(row=1, column=0)
 
 textbox2 = tk.Entry(textboxFrame)
-textbox2.grid(row=0, column=3, padx=5)
+textbox2.grid(row=1, column=1, padx=5)
 
 replaceButton = tk.Button(textboxFrame, text="Замена", command=replace)
-replaceButton.grid(row=0, column=4, padx=5)
+replaceButton.grid(row=0, rowspan=2, column=4, padx=5)
 # вызовв замены
 replaceCalled = False
 
 checkButton = tk.Button(root, text="Проверка", command=checkAlphabeticalOrder)
-checkButton.grid(row=0, column=5)
+checkButton.grid(row=9, column=0,columnspan=4)
 
 root.mainloop()
